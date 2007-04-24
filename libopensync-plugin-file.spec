@@ -1,5 +1,5 @@
 %define name	libopensync-plugin-file
-%define version	0.20
+%define version	0.22
 %define release %mkrel 1
 
 Name: 	 	%{name}
@@ -7,7 +7,7 @@ Summary: 	File plugin for opensync synchronization tool
 Version: 	%{version}
 Release: 	%{release}
 
-Source:		%{name}-%{version}.tar.gz
+Source:		svn://svn.opensync.org/plugins/syncml/%{name}-%{version}.tar.bz2
 URL:		http://www.opensync.org
 License:	GPL
 Group:		Office
