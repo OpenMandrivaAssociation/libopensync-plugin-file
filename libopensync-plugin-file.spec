@@ -41,6 +41,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS
 %{_libdir}/opensync/plugins/*
 %{_datadir}/opensync/defaults/*
