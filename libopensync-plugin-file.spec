@@ -1,5 +1,5 @@
 %define name	libopensync-plugin-file
-%define version	0.33
+%define version	0.34
 %define release %mkrel 1
 
 Name: 	 	%{name}
@@ -9,13 +9,13 @@ Release: 	%{release}
 
 Source:		http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
 URL:		http://www.opensync.org
-License:	GPL
+License:	GPLv2+
 Group:		Office
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 
 BuildRequires:	opensync-devel >= %{version}
 BuildRequires:	fam-devel
-
+BuildRequires:	cmake
 Obsoletes:	multisync-backup
 Provides:	multisync-backup
 
@@ -27,12 +27,14 @@ files stored on disk.
 %setup -q
 
 %build
-%configure2_5x
+%cmake
 %make
 										
 %install
 rm -rf $RPM_BUILD_ROOT
+cd build
 %makeinstall_std
+cd -
 
 %find_lang %name
 
