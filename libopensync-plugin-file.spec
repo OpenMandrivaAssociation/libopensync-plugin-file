@@ -1,21 +1,16 @@
-%define name	libopensync-plugin-file
-%define version	0.36
-%define release %mkrel 1
-
-Name: 	 	%{name}
-Summary: 	File plugin for opensync synchronization tool
-Version: 	%{version}
-Release: 	%{release}
-
-Source:		http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
+Name: 	 	libopensync-plugin-file
+Summary: 	File plugin for OpenSync synchronization framework
+Version: 	0.22
+Epoch:		1
+Release: 	%{mkrel 2}
+Source0:	http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
 URL:		http://www.opensync.org
-License:	GPLv2+
+License:	LGPLv2+
 Group:		Office
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-
-BuildRequires:	opensync-devel >= %{version}
+BuildRequires:	libopensync-devel < 0.30
 BuildRequires:	fam-devel
-BuildRequires:	cmake
+Requires:	libopensync >= %{epoch}:%{version}
 Obsoletes:	multisync-backup
 Provides:	multisync-backup
 
@@ -27,22 +22,22 @@ files stored on disk.
 %setup -q
 
 %build
-%cmake
+%configure2_5x
 %make
 										
 %install
-rm -rf $RPM_BUILD_ROOT
-cd build
+rm -rf %{buildroot}
 %makeinstall_std
-cd -
 
-%find_lang %name
+%find_lang %{name}
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS
-%{_libdir}/opensync-1.0/plugins/*
-%{_datadir}/opensync-1.0/defaults/*
+%doc AUTHORS ChangeLog NEWS README
+%{_libdir}/opensync/plugins/*
+%{_datadir}/opensync/defaults/*
+
+
