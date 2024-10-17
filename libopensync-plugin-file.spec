@@ -4,7 +4,7 @@ Version: 	0.22
 Epoch:		1
 Release: 	%{mkrel 3}
 Source0:	http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
-URL:		http://www.opensync.org
+URL:		https://www.opensync.org
 License:	LGPLv2+
 Group:		Office
 BuildRoot:	%{_tmppath}/%{name}-buildroot
